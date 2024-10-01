@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+
+{% block site_content %}
+
+<form action="/cadastro/cadastrar" method="post">
+
+    <div class="center_title_bar">Cadastro de Usuários</div>
+
+    <div class="prod_box_big">
+
+        <div class="top_prod_box_big"></div>
+
+        <div class="center_prod_box_big">
+
+            {{ flash('mensagem_cadastro') | raw }}
+
+            <div class="contact_form">
+
+                <div class="form_row">
+                    <label class="contact"><strong>Nome</strong></label>
+                    <input type="text" class="contact_input" name="nome" placeholder="Nome" value="{{ persist('nome') }}" />
+                    {{ errorField('nome') | raw }}
+                    <br /><br />
+                </div>
+
+                <div class="form_row">
+                    <label class="contact"><strong>Sobrenome</strong></label>
+                    <input type="text" class="contact_input" name="sobrenome" placeholder="Sobrenome" value="{{ persist('sobrenome') }}" />
+                    {{ errorField('sobrenome') | raw }}
+                    <br /><br />
+                </div>
+
+                <div class="form_row">
+                    <label class="contact"><strong>E-mail</strong></label>
+                    <input type="email" class="contact_input" name="email" placeholder="E-mail" value="{{ persist('email') }}" />
+                    {{ errorField('email') | raw }}
+                    <br /><br />
+                </div>
+
+                <div class="form_row">
+                    <label class="contact"><strong>Senha</strong></label>
+                    <input type="password" class="contact_input" name="password" placeholder="Senha" value="{{ persist('password') }}" />
+                    {{ errorField('password') | raw }}
+                    <br /><br />
+                </div>
+
+                <div class="form_row">
+                    <label class="contact"><strong>DDD</strong></label>
+                    <input type="text" class="contact_input" name="ddd" placeholder="DDD" value="{{ persist('ddd') }}" />
+                    {{ errorField('ddd') | raw }}
+                    <br /><br />
+                </div>
+
+                <div class="form_row">
+                    <label class="contact"><strong>Tefefone</strong></label>
+                    <input type="text" class="contact_input" name="telefone" placeholder="Telefone" value="{{ persist('telefone') }}" />
+                    {{ errorField('telefone') | raw }}
+                    <br /><br />
+                </div>
+
+                <div class="form_row">
+                    <label class="contact"><strong>Endereço</strong></label>
+                    <input type="text" class="contact_input" name="endereco" placeholder="Endereço" value="{{ persist('endereco') }}" />
+                    {{ errorField('endereco') | raw }}
+                    <br /><br />
+                </div>
+
+                <div class="form_row">
+                    <label class="contact"><strong>Bairro</strong></label>
+                    <input type="text" class="contact_input" name="bairro" placeholder="Bairro" value="{{ persist('bairro') }}" />
+                    {{ errorField('bairro') | raw }}
+                    <br /><br />
+                </div>
+
+                <div class="form_row">
+                    <label class="contact"><strong>Cidade</strong></label>
+                    <input type="text" class="contact_input" name="cidade" placeholder="Cidade" value="{{ persist('cidade') }}" />
+                    {{ errorField('cidade') | raw }}
+                    <br /><br />
+                </div>
+
+                <div class="form_row">
+                    <label class="contact"><strong>CEP</strong></label>
+                    <input type="text" class="contact_input" name="cep" placeholder="CEP" value="{{ persist('cep') }}" />
+                    {{ errorField('cep') | raw }}
+                    <br /><br />
+                </div>
+
+                <div class="form_row">
+                    <label class="contact"><strong>Estado</strong></label>
+                    <input type="text" class="contact_input" name="estado" placeholder="Estado" value="{{ persist('estado') }}" />
+                    {{ errorField('estado') | raw }}
+                    <br /><br />
+                </div>
+
+                <div><button type="submit" class="mini ui green button" style="float: left;">Cadastrar</button></div>
+
+            </div>
+        </div>
+
+        <div class="bottom_prod_box_big"></div>
+
+    </div>
+
+</form>
+
+{% endblock %}
