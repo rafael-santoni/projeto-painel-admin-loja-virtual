@@ -30,16 +30,16 @@ class AdminLoginController extends BaseController {
 
             $logado = Logar::logarUser($filter->get('email'), $filter->get('password'));
 
-            if(!$logado) {
+            if($logado) {
                 return Redirect::redirect('/painel');
             }
 
-            FlashMessage::add('erro_login', 'Campos email e/ou senha inválidos, tente novamente.');
+            FlashMessage::add('erro_login', 'Erro ao logar, verifique seu email ou senha.');
             Redirect::redirect('/admin');
 
         }
 
-        FlashMessage::add('erro_login', 'Erro! Verifique os campos e tente novamente.');
+        FlashMessage::add('erro_login', 'Erro ao logar, verifique os campos digitados.');
         Redirect::redirect('/admin');
 
     }

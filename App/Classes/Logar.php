@@ -10,7 +10,8 @@ class Logar {
     public static function logarUser($email, $password){
 
         $auth = new Auth($email, $password);
-        $auth->logar(new UserModel);
+        // $auth->logar(new UserModel);
+        return $auth->logar(new UserModel);
 
     }
 
