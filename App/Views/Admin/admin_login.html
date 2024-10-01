@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ titulo }}</title>
+
+    <link rel="stylesheet" href="{{ site_url() }}/assets/css/admin/login.css" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+
+                <h1 class="text-center login-title">Painel Administrativo</h1>
+
+                <div class="account-wall">
+
+                    <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt="" />
+                    
+                    <form class="form-signin" method="POST" action="/adminLogin/store">
+
+                        <input type="text" class="form-control" placeholder="Email" value="rafael@email.com" required autofocus>
+                        <input type="password" class="form-control" placeholder="Password" value="123" required>
+
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Logar</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
