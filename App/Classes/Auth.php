@@ -17,6 +17,22 @@ class Auth {
 
     }
 
+    private function loginStatus($status){
+
+        if($status == 2) {
+
+            unset($_SESSION['admin_logado']);
+            $_SESSION['logado'] = true;
+
+        } else {
+
+            $_SESSION['admin_logado'] = true;
+            $_SESSION['logado'] = true;
+
+        }
+
+    }
+
     public function logar(Model $model){
 
         $userEncontrado = $model->find('email', $this->email);
@@ -29,7 +45,8 @@ class Auth {
 
             $_SESSION['id'] = $userEncontrado->id;
             $_SESSION['name'] = $userEncontrado->name;
-            $_SESSION['logado'] = true;
+            // $_SESSION['logado'] = true;
+            $this->loginStatus($userEncontrado->is_admin);
 
             return true;
 
