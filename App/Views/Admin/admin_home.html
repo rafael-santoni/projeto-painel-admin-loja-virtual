@@ -57,11 +57,12 @@
                 </div>
                 <div class="card-content">
                     <p class="category">Clientes Cadastrados</p>
-                    <h3 class="title">75</h3>
+                    <h3 class="title">{{ clientes }}</h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">
-                        <i class="material-icons">local_offer</i> Tracked from Github
+                        <i class="material-icons text-danger">warning</i>
+                        <a href="#">Ver clientes</a>
                     </div>
                 </div>
             </div>
@@ -74,12 +75,10 @@
                 </div>
                 <div class="card-content">
                     <p class="category">Online</p>
-                    <h3 class="title">+245</h3>
+                    <h3 class="title">{{ totalUsuariosOnline }}</h3>
                 </div>
                 <div class="card-footer">
-                    <div class="stats">
-                        <i class="material-icons">update</i> Just Updated
-                    </div>
+
                 </div>
             </div>
         </div>
