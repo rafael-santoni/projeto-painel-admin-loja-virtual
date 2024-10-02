@@ -10,20 +10,18 @@
             <div class="card card-stats">
 
                 <div class="card-header" data-background-color="orange">
-                    <i class="material-icons">content_copy</i>
+                    <i class="material-icons">shopping_cart</i>
                 </div>
 
                 <div class="card-content">
-                    <p class="category">Used Space</p>
-                    <h3 class="card-title">49/50
-                        <small>GB</small>
-                    </h3>
+                    <p class="category">Vendas Total</p>
+                    <h3 class="title">R$ {{ totalVendas.totalVendas | number_format(2, ',', '.') }}</h3>
                 </div>
 
                 <div class="card-footer">
                     <div class="stats">
                         <i class="material-icons text-danger">warning</i>
-                        <a href="#pablo">Get More Space...</a>
+                        <a href="#">Ver vendas</a>
                     </div>
                 </div>
 
@@ -34,17 +32,18 @@
             <div class="card card-stats">
                 
                 <div class="card-header" data-background-color="green">
-                    <i class="material-icons">store</i>
+                    <i class="material-icons">shopping_cart</i>
                 </div>
 
                 <div class="card-content">
-                    <p class="category">Revenue</p>
-                    <h3 class="title">$34,245</h3>
+                    <p class="category">Vendas Mês</p>
+                    <h3 class="title">R$ {{ totalVendasMes.totalVendas | number_format(2, ',', '.') }}</h3>
                 </div>
 
                 <div class="card-footer">
                     <div class="stats">
-                        <i class="material-icons text-danger">date_range</i> Last 24 Hours
+                        <i class="material-icons text-danger">warning</i>
+                        <a href="#">Ver vendas</a>
                     </div>
                 </div>
 
@@ -54,10 +53,10 @@
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
                 <div class="card-header" data-background-color="red">
-                    <i class="material-icons">info_outline</i>
+                    <i class="material-icons">account_box</i>
                 </div>
                 <div class="card-content">
-                    <p class="category">Fixed Issues</p>
+                    <p class="category">Clientes Cadastrados</p>
                     <h3 class="title">75</h3>
                 </div>
                 <div class="card-footer">
@@ -71,10 +70,10 @@
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
                 <div class="card-header" data-background-color="blue">
-                    <i class="fa fa-twitter"></i>
+                    <i class="material-icons">beenhere</i>
                 </div>
                 <div class="card-content">
-                    <p class="category">Followers</p>
+                    <p class="category">Online</p>
                     <h3 class="title">+245</h3>
                 </div>
                 <div class="card-footer">
