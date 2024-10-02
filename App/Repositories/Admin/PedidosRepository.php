@@ -32,4 +32,15 @@ class PedidosRepository {
         
     }
 
+    public function vendasMeses(){
+
+        $sql = "SELECT * FROM {$this->pedidosModel->table} WHERE YEAR(created_at) = YEAR(CURDATE()) AND pedido_status = 1 ORDER BY created_at ASC";
+
+        $this->pedidosModel->typeDatabase->prepare($sql);
+        $this->pedidosModel->typeDatabase->execute();
+        
+        return $this->pedidosModel->typeDatabase->fetchAll();
+
+    }
+
 }
