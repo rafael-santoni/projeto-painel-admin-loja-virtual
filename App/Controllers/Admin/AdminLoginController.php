@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Classes\ErrorsValidate;
 use App\Classes\FlashMessage;
 use App\Classes\Logar;
+use App\Classes\Logout;
 use App\Classes\MassFilter;
 use App\Classes\Redirect;
 use App\Classes\Validate;
@@ -42,6 +43,13 @@ class AdminLoginController extends BaseController {
         FlashMessage::add('erro_login', 'Erro ao logar, verifique os campos digitados.');
         Redirect::redirect('/admin');
 
+    }
+
+    public function destroy() {
+
+        Logout::logoutAdmin();
+        Redirect::redirect('/admin');
+        
     }
 
 }

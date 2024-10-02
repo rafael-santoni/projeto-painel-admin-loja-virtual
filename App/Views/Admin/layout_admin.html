@@ -36,14 +36,14 @@
 
     <div class="wrapper">
         
-        <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+        <div class="sidebar" data-color="purple" data-background-color="white" data-image="{{ site_url() }}/assets/img/sidebar-1.jpg">
             <!--
             Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
             Tip 2: you can also add an image using data-image tag
             -->
             <div class="logo">
                 <a href="/painel" class="simple-text logo-normal">
-                    Painel
+                    Loja Virtual
                 </a>
             </div>
 
@@ -54,73 +54,61 @@
         </div> <!-- .sidebar END -->
 
     <div class="main-panel">
-      <!-- Navbar -->
-      <nav class="navbar navbar-transparent navbar-absolute">
-        <div class="container-fluid">
+        <!-- Navbar -->
+        <nav class="navbar navbar-transparent navbar-absolute">
+            <div class="container-fluid">
 
-            <div class="navbar-header">
+                <div class="navbar-header">
 
-                <a class="navbar-brand" href="#pablo">Dashboard<div class="ripple-container"></div></a>
-
-                <button type="button" class="navbar-toggle" data-toggle="collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-            </div> <!-- .navbar-header END -->
-          
-            <div class="collapse navbar-collapse">
-
-                <!-- <form class="navbar-form">
-                <div class="input-group no-border">
-                    <input type="text" value="" class="form-control" placeholder="Search...">
-                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                    <i class="material-icons">search</i>
-                    <div class="ripple-container"></div>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     </button>
-                </div>
-                </form> -->
 
-                <ul class="nav navbar-nav navbar-right">
+                    <a class="navbar-brand" href="#">
+                        Bem Vindo {{ user().name }} {{ user().sobrenome }}
+                    </a>
 
-                    <li>
-                        <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="material-icons">dashboard</i>
-                            <p class="hidden-lg hidden-md">Stats</p>
-                        </a>
-                    </li>
+                </div> <!-- .navbar-header END -->
+          
+                <div class="collapse navbar-collapse">
 
-                    <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="material-icons">notifications</i>
-                            <span class="notification">5</span>
-                            <p class="hidden-lg hidden-md">
-                                Some Actions
-                            </p>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Mike John responded to your email</a></li>
-                            <li><a href="#">You have 5 new tasks</a></li>
-                            <li><a href="#">You're now friend with Andrew</a></li>
-                            <li><a href="#">Another Notification</a></li>
-                            <li><a href="#">Another One</a></li>
-                        </ul>
-                    </li>
+                    <ul class="nav navbar-nav navbar-right">
 
-                    <li class="dropdown">
-                        <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="material-icons">person</i>
-                            <p class="hidden-lg hidden-md">
-                                Account
-                            </p>
-                        </a>
-                    </li>
+                        <li>
+                            <a href="/painel" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="material-icons">dashboard</i>
+                                <p class="hidden-lg hidden-md">Dashboard</p>
+                            </a>
+                        </li>
 
-                </ul>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="material-icons">person</i>
+                                <p class="hidden-lg hidden-md">Notifications</p>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><i class="fa fa-cog"></i> Detalhes da conta</a></li>
+                                <li><a href="/adminLogin/destroy"><i class="fa fa-sign-out"></i> Logout</a></li>
+                            </ul>
+                        </li>
 
-            </div> <!-- .navbar-collapse END -->
+                    </ul>
+
+                    <!-- <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group is-empty">
+                        <input type="text" class="form-control" placeholder="Search...">
+                        <span class="material-input"></span>
+                    </div>
+                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                        <i class="material-icons">search</i>
+                        <div class="ripple-container"></div>
+                    </button>
+                    </form> -->
+
+                </div> <!-- .navbar-collapse END -->
 
             </div> <!-- .container-fluid END -->
         </nav> <!-- .navbar END -->
