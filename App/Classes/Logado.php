@@ -2,6 +2,8 @@
 
 namespace App\Classes;
 
+use App\Classes\Redirect;
+
 class Logado {
 
     public static function logado(){
@@ -11,6 +13,14 @@ class Logado {
         }
 
         return false;
+
+    }
+
+    public static function adminLogado() {
+
+        if(!isset($_SESSION['admin_logado']) || $_SESSION['admin_logado'] == false) {
+            Redirect::redirect();
+        }
 
     }
 
