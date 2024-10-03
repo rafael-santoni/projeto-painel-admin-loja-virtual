@@ -9,12 +9,15 @@
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 
         <label for="produto_nome">Produto</label>
+        {{ errorField('produto_nome') | raw }}
         <input type="text" name="produto_nome" id="produto_nome" class="form-control" value="" pattern="" title="" />
 
         <label for="produto_slug">Slug</label>
+        {{ errorField('produto_slug') | raw }}
         <input type="text" name="produto_slug" id="produto_slug" class="form-control" value="" pattern="" title="" />
 
         <label for="produto_valor">Valor</label>
+        {{ errorField('produto_valor') | raw }}
         <input type="text" name="produto_valor" id="produto_valor" class="form-control" value="" pattern="" title="" />
 
     </div>
@@ -22,18 +25,35 @@
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 
         <label for="produto_categoria">Categoria</label>
+        {{ errorField('produto_categoria') | raw }}
         <select name="produto_categoria" id="produto_categoria" class="form-control">
-            <option value=""></option>
+
+        {% for categoria in categorias %}
+            <option value="{{ categoria.id }}">{{ categoria.categoria_nome }}</option>
+        {% endfor %}
+
         </select>
 
         <label for="produto_marca">Marca</label>
+        {{ errorField('produto_marca') | raw }}
         <select name="produto_marca" id="produto_marca" class="form-control">
-            <option value=""></option>
+
+        {% for marca in marcas %}
+            <option value="{{ marca.id }}">{{ marca.marca_nome }}</option>
+        {% endfor %}
+
         </select>
 
         <label for="produto_garantia">Garantia</label>
+        {{ errorField('produto_garantia') | raw }}
         <input type="text" name="produto_garantia" id="produto_garantia" class="form-control" value="" pattern="" title="" />
 
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <label for="produto_descricao">Descrição</label>
+        {{ errorField('produto_descricao') | raw }}
+        <textarea name="produto_descricao" id="produto_descricao" class="form-control" rows="7"></textarea>
     </div>
 
     <button type="submit" class="btn btn-primary">Cadastrar</button>
