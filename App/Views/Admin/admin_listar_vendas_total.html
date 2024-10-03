@@ -22,7 +22,7 @@
             <td>R$ {{ pedido.total | number_format(2, ',', '.') }}</td>
             <td>{{ pedido.createdAt | date('d/m/Y H:i:s') }}</td>
             <td>
-                <button type="button" class="btn btn-xs btn-success">ver produtos</button>
+                <button type="button" data-id="{{ pedido.idPedido }}" class="btn btn-xs btn-success btn-listar-pedidos">ver produtos</button>
             </td>
         </tr>
     {% endfor %}
