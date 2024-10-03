@@ -1,0 +1,43 @@
+{% extends 'layout_admin.html' %}
+
+{% block admin_content %}
+
+<h2>Cadastrar Produto</h2>
+
+<form action="/adminProdutos/store" method="POST">
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+        <label for="produto_nome">Produto</label>
+        <input type="text" name="produto_nome" id="produto_nome" class="form-control" value="" pattern="" title="" />
+
+        <label for="produto_slug">Slug</label>
+        <input type="text" name="produto_slug" id="produto_slug" class="form-control" value="" pattern="" title="" />
+
+        <label for="produto_valor">Valor</label>
+        <input type="text" name="produto_valor" id="produto_valor" class="form-control" value="" pattern="" title="" />
+
+    </div>
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+        <label for="produto_categoria">Categoria</label>
+        <select name="produto_categoria" id="produto_categoria" class="form-control">
+            <option value=""></option>
+        </select>
+
+        <label for="produto_marca">Marca</label>
+        <select name="produto_marca" id="produto_marca" class="form-control">
+            <option value=""></option>
+        </select>
+
+        <label for="produto_garantia">Garantia</label>
+        <input type="text" name="produto_garantia" id="produto_garantia" class="form-control" value="" pattern="" title="" />
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+
+</form>
+
+{% endblock %}

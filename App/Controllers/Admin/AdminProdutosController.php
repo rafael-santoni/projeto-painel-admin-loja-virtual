@@ -22,4 +22,15 @@ class AdminProdutosController extends BaseController {
 
     }
 
+    public function create(){
+
+        $dados = [
+            'titulo' => 'Loja Virtual - RS-Dev | Painel Administrativo | Cadastrar Produto',
+        ];
+
+        $template = $this->twig->load('admin_form_cadastrar_produto.html');
+        echo $template->render($dados);
+
+    }
+
 }
