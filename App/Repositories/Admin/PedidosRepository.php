@@ -43,4 +43,17 @@ class PedidosRepository {
 
     }
 
+    public function listaVendas(){
+
+        $sql = "SELECT pedidos.id as idPedido, pedido_frete, total, name, sobrenome, pedidos.created_at as createdAt 
+                FROM {$this->pedidosModel->table} 
+                INNER JOIN users ON users.id = pedido_user 
+                WHERE pedido_status = 1";
+        $this->pedidosModel->typeDatabase->prepare($sql);
+        $this->pedidosModel->typeDatabase->execute();
+        
+        return $this->pedidosModel->typeDatabase->fetchAll();
+
+    }
+
 }
