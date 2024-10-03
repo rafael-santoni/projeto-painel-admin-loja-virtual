@@ -7,6 +7,7 @@ use App\Models\Site\UserModel;
 use App\Models\Site\UsersOnlineModel;
 use App\Repositories\Admin\PedidosProdutosRepository;
 use App\Repositories\Admin\PedidosRepository;
+use App\Repositories\Admin\UsersRepository;
 
 class PainelController extends BaseController {
 
@@ -25,6 +26,9 @@ class PainelController extends BaseController {
         $pedidosProdutosRepository = new PedidosProdutosRepository;
         $produtosEncontrados = $pedidosProdutosRepository->listaVendas(6);
 
+        $usersRepository = new UsersRepository;
+        $listaUsers = $usersRepository->listaUsers(6);
+
         $dados = [
             'titulo' => 'Loja Virtual - RS-Dev | Painel Administrativo',
             'totalVendas' => $totalVendas,
@@ -32,6 +36,7 @@ class PainelController extends BaseController {
             'clientes' => count($usersEncontrados),
             'totalUsuariosOnline' => count($totalUsersOnline),
             'listaVendas' => $produtosEncontrados,
+            'ultimosClientes' => $listaUsers,
         ];
 
         $template = $this->twig->load('admin_home.html');
