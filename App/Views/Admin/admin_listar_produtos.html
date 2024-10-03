@@ -24,7 +24,7 @@
     
     <tbody>
     {% for produto in produtos %}
-        <tr>
+        <tr class="row-promocao">
             <td>{{ produto.produto_nome }}</td>
 
             <td>
@@ -35,11 +35,13 @@
                 <div class="checkbox">
                     <label>
                         {% if (produto.produto_promocao == 1) %}
-                            {% set promocao = "checked" %}
-                        {% else %}
-                            {% set promocao = "" %}
+                            {# {% set promocao = "checked" %} #}
+                            <button class="btn btn-xs btn-danger btn-promocao">Tirar</button>
+                            {% else %}
+                            {# {% set promocao = "" %} #}
+                            <button class="btn btn-xs btn-success btn-promocao" data-id="{{ produto.id }}">Colocar</button>
                         {% endif %}
-                        <input type="checkbox" name="produto_promocao" {{ promocao }} />
+                        <!-- <input type="checkbox" name="produto_promocao" {{ promocao }} /> -->
                     </label>
                 </div>
             </td>
