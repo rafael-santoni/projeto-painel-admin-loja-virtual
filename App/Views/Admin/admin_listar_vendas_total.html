@@ -15,7 +15,9 @@
     </thead>
 
     <tbody>
+    {% set total = 0 %}
     {% for pedido in pedidos %}
+        {% set total = total + pedido.total %}
         <tr>
             <td>{{ pedido.name }} {{ pedido.sobrenome }}</td>
             <td>R$ {{ pedido.pedido_frete | number_format(2, ',', '.') }}</td>
@@ -27,6 +29,12 @@
         </tr>
     {% endfor %}
     </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="5">Total: R$ {{ total | number_format(2, ',', '.') }}</td>
+        </tr>
+    </tfoot>
 
 </table>
 
