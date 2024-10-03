@@ -1,0 +1,87 @@
+{% extends 'layout_admin.html' %}
+
+{% block admin_content %}
+
+<h2>Lista de Produtos</h2>
+
+<div class="btn-group">
+  <a class="btn btn-defatult" href="/painel" role="button">Início</a>
+  <a class="btn btn-defatult" href="/adminProdutos/create" role="button">Cadastrar Produto</a>
+</div>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Capa</th>
+            <th>Promoção</th>
+            <th>Presente</th>
+            <th>Destaque</th>
+            <th>Editar</th>
+            <th>Deletar</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+    {% for produto in produtos %}
+        <tr>
+            <td>{{ produto.produto_nome }}</td>
+
+            <td>
+                <a class="btn btn-default btn-xs" href="#" role="button">Nova Capa</a>
+            </td>
+
+            <td>
+                <div class="checkbox">
+                    <label>
+                        {% if (produto.produto_promocao == 1) %}
+                            {% set promocao = "checked" %}
+                        {% else %}
+                            {% set promocao = "" %}
+                        {% endif %}
+                        <input type="checkbox" name="produto_promocao" {{ promocao }} />
+                    </label>
+                </div>
+            </td>
+
+            <td>
+                <div class="checkbox">
+                    <label>
+                        {% if (produto.produto_presente == 1) %}
+                            {% set presente = "checked" %}
+                        {% else %}
+                            {% set presente = "" %}
+                        {% endif %}
+                        <input type="checkbox" name="produto_presente" {{ presente }} />
+                    </label>
+                </div>
+            </td>
+            
+            <td>
+                <div class="checkbox">
+                    <label>
+                        {% if (produto.produto_destaque == 1) %}
+                            {% set destaque = "checked" %}
+                        {% else %}
+                            {% set destaque = "" %}
+                        {% endif %}
+                        <input type="checkbox" name="produto_destaque" {{ destaque }} />
+                    </label>
+                </div>
+            </td>
+
+            <td>
+                <a class="btn btn-success btn-xs" href="#" role="button">Editar</a>
+            </td>
+
+            <td>
+                <a class="btn btn-danger btn-xs" href="#" role="button">Deletar</a>
+            </td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+{% endblock %}
