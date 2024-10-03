@@ -99,4 +99,20 @@ class AdminProdutosController extends BaseController {
 
     }
 
+    public function destroy($args){
+
+        $id = filter_var($args[0], FILTER_SANITIZE_NUMBER_INT);
+
+        $produtoModel = new ProdutoModel;
+        $produtoEncontrado = $produtoModel->find('id', $id);
+
+        @unlink($produtoEncontrado->produto_foto);
+        $deletado = $produtoModel->delete('id', $id);
+
+        if($deletado) {
+            Redirect::redirect('/adminProdutos');
+        }
+
+    }
+
 }
