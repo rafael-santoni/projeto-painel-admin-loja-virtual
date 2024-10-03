@@ -3,6 +3,7 @@
 {% block admin_content %}
 
 <h2>Cadastrar Produto</h2>
+{{ flash('mensagem_produto') | raw }}
 
 <form action="/adminProdutos/store" method="POST">
 
@@ -10,15 +11,15 @@
 
         <label for="produto_nome">Produto</label>
         {{ errorField('produto_nome') | raw }}
-        <input type="text" name="produto_nome" id="produto_nome" class="form-control" value="" pattern="" title="" />
+        <input type="text" name="produto_nome" id="produto_nome" class="form-control" value="" />
 
         <label for="produto_slug">Slug</label>
         {{ errorField('produto_slug') | raw }}
-        <input type="text" name="produto_slug" id="produto_slug" class="form-control" value="" pattern="" title="" />
+        <input type="text" name="produto_slug" id="produto_slug" class="form-control" value="" />
 
         <label for="produto_valor">Valor</label>
         {{ errorField('produto_valor') | raw }}
-        <input type="text" name="produto_valor" id="produto_valor" class="form-control" value="" pattern="" title="" />
+        <input type="text" name="produto_valor" id="produto_valor" class="form-control" value="" />
 
     </div>
 
@@ -46,7 +47,7 @@
 
         <label for="produto_garantia">Garantia</label>
         {{ errorField('produto_garantia') | raw }}
-        <input type="text" name="produto_garantia" id="produto_garantia" class="form-control" value="" pattern="" title="" />
+        <input type="text" name="produto_garantia" id="produto_garantia" class="form-control" value="" />
 
     </div>
 

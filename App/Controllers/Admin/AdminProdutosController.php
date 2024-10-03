@@ -3,7 +3,9 @@
 namespace App\Controllers\Admin;
 
 use App\Classes\ErrorsValidate;
+use App\Classes\FlashMessage;
 use App\Classes\MassFilter;
+use App\Classes\PersistInput;
 use App\Classes\Redirect;
 use App\Classes\RepeatedRegistersAdmin;
 use App\Classes\Validate;
@@ -73,6 +75,21 @@ class AdminProdutosController extends BaseController {
                     'produto_valor', 'produto_categoria',
                     'produto_marca', 'produto_garantia', 'produto_descricao'
                 );
+
+                $produtoModel = new ProdutoModel;
+                if($produtoModel->create($filter->all())) {
+
+                    FlashMessage::add('mensagem_produto', 'Produto cadastrado com sucesso!', 'success');
+                    PersistInput::removeInputs();
+                    
+                    return Redirect::redirect('/adminProdutos/create');
+
+                }
+
+                FlashMessage::add('mensagem_produto', 'Erro ao cadastrar o produto!');
+                    
+                return Redirect::redirect('/adminProdutos/create');
+
 
             } else {
                 return Redirect::redirect('/adminProdutos/create');
