@@ -56,4 +56,19 @@ class PedidosRepository {
 
     }
 
+    public function listaVendasMes(){
+
+        $sql = "SELECT pedidos.id as idPedido, pedido_frete, total, name, sobrenome, pedidos.created_at as createdAt 
+                FROM {$this->pedidosModel->table} 
+                INNER JOIN users ON users.id = pedido_user 
+                WHERE pedido_status = 1 
+                    AND MONTH(created_at) = MONTH(CURDATE()) 
+                    AND YEAR(created_at) = YEAR(CURDATE())";
+        $this->pedidosModel->typeDatabase->prepare($sql);
+        $this->pedidosModel->typeDatabase->execute();
+        
+        return $this->pedidosModel->typeDatabase->fetchAll();
+
+    }
+
 }
