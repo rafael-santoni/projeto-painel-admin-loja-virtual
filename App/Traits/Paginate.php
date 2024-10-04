@@ -46,4 +46,70 @@ trait Paginate {
 
     }
 
+    private function previous(){
+
+        $links = '';
+
+        if($this->currentPage() != 1) {
+            
+            $previous = ($this->currentPage() - 1);
+
+            $links .= '<li><a href="'.$this->link().'1"> [1] </a></li>';
+            $links .= '<li><a href="'.$this->link().$previous.'" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li>';
+
+        }
+
+        return $links;
+
+    }
+
+    private function next(){
+
+        $links = '';
+
+        if($this->currentPage() != 1) {
+            
+            $next = ($this->currentPage() + 1);
+
+            $links .= '<li><a href="'.$this->link().$next.'" aria-label="Next"> <span aria-hidden="true">&laquo;</span></a></li>';
+            $links .= '<li><a href="'.$this->link().$this->totalPages().'"> ['.$this->totalPages().'] </a></li>';
+
+        }
+
+        return $links;
+
+    }
+
+    private function showLinks($i){
+
+        $class = ($i == $this->currentPage()) ? 'actual' : '';
+
+        if($i > 0 && $i <= $this->totalPages()) {
+            return '<li><a href="'.$this->link().$i.'" class="'.$class.'">'.$i.'</a></li>';
+        }
+
+    }
+
+    public function links(){
+
+        $totalPages = $this->totalPages();
+
+        if($totalPages > 0) {
+
+            $links = '<ul class="pagination">';
+            $links .= $this->previous();
+
+            for ($i = $this->currentPage() - $this->maxLinks; $i <= $this->currentPage() + $this->maxLinks; $i++) { 
+                $links .= $this->showLinks($i);
+            }
+
+            $links .= $this->next();
+            $links .= '</ul>';
+
+            return $links;
+
+        }
+
+    }
+
 }
