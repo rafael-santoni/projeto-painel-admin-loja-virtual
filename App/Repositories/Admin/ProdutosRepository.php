@@ -23,4 +23,26 @@ class ProdutosRepository {
         
     }
 
+    public function updateValorPromocao($id, $valor){
+
+        $sql = "UPDATE {$this->produtoModel->table} SET produto_valor_promocao = ? WHERE id = ?";
+        $this->produtoModel->typeDatabase->prepare($sql);
+        $this->produtoModel->typeDatabase->bindValue(1, $valor);
+        $this->produtoModel->typeDatabase->bindValue(2, $id);
+
+        return $this->produtoModel->typeDatabase->execute();
+        
+    }
+
+    public function updatePromocao($id, $status){
+
+        $sql = "UPDATE {$this->produtoModel->table} SET produto_promocao = ? WHERE id = ?";
+        $this->produtoModel->typeDatabase->prepare($sql);
+        $this->produtoModel->typeDatabase->bindValue(1, $status);
+        $this->produtoModel->typeDatabase->bindValue(2, $id);
+
+        return $this->produtoModel->typeDatabase->execute();
+        
+    }
+
 }

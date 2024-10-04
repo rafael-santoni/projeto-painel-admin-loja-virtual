@@ -20,7 +20,36 @@ $(document).ready(function() {
 
         event.preventDefault();
 
-        alert('Ativar a promoção');
+        var td = $(this).closest("td");
+        var id = td.find(".input-promocao").attr("data-id");
+        var input_promocao = td.find(".input-promocao").val();
+
+        if(input_promocao.length <= 0) {
+
+            swal("Alerta!", "Você precisa colocar um valor para a promoção", "warning");
+
+            return false;
+
+        }
+
+        $.ajax({
+            type: "post",
+            url: "/adminProdutosPromocao",
+            data: "id="+id+"&valor="+input_promocao,
+            dataType: "dataType",
+            success: function (retorno) {
+
+                if(retorno == "updated") {
+                    swal("Atualizado", "Você colocou o produto em promoção pelo valor de "+input_promocao, "success");
+                }
+
+                setTimeout(function() {
+                    location.reload();
+                },2000);
+
+            }
+        });
+
         
         
     });
