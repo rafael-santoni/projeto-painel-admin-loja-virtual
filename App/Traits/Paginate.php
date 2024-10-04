@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Classes\Bind;
 use App\Classes\Uri;
 
 trait Paginate {
@@ -24,6 +25,15 @@ trait Paginate {
 
     private function offSet(){
         return ($this->currentPage() * $this->perPage) - $this->perPage;
+    }
+
+    private function totalRecords(){
+
+        $bind = Bind::get('bind');
+        $bind->execute();
+
+        return $bind->rowCount();
+
     }
 
     public function perPage($perPage){
@@ -109,6 +119,10 @@ trait Paginate {
             return $links;
 
         }
+
+    }
+
+    public function infoPaginate(){
 
     }
 

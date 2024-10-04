@@ -42,4 +42,8 @@ class TypePdoDatabase implements InterfaceTypeDatabase {
 		return $this->objectPdo->fetchAll();
 	}
 
+	public function getBind(){
+		return $this->objectPdo;
+	}
+
 }
