@@ -19,7 +19,7 @@ class AdminProdutosPromocaoController extends BaseController {
         $produtosRepository = new ProdutosRepository;
 
         if($produtoEncontrado->produto_promocao == 1) {
-            // $produtosRepository->updatePromocao($id, 2);
+            $produtosRepository->updatePromocao($id, 2);
         }
         
         if ($produtoEncontrado->produto_promocao == 2) {

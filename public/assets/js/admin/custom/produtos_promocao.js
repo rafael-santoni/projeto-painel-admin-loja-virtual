@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     var btn_promocao = $(".btn-promocao");
+    var btn_tirar_promocao = $(".btn-tirar-promocao");
 
     btn_promocao.on("click", function(event) {
 
@@ -33,24 +34,46 @@ $(document).ready(function() {
         }
 
         $.ajax({
-            type: "post",
             url: "/adminProdutosPromocao",
+            type: "post",
             data: "id="+id+"&valor="+input_promocao,
-            dataType: "dataType",
             success: function (retorno) {
 
                 if(retorno == "updated") {
-                    swal("Atualizado", "Você colocou o produto em promoção pelo valor de "+input_promocao, "success");
+                    swal("Atualizado", "Você colocou o produto em promoção pelo valor de R$ "+input_promocao, "success");
                 }
 
                 setTimeout(function() {
                     location.reload();
-                },2000);
+                },1500);
 
             }
         });
 
-        
+    });
+
+    btn_tirar_promocao.on("click", function(event) {
+
+        event.preventDefault();
+
+        var id = $(this).attr("data-id");        
+
+        $.ajax({
+            url: "/adminProdutosPromocao",
+            type: "post",
+            data: "id="+id,
+            success: function (retorno) {                
+
+                if(retorno == "updated") {                    
+                    swal("Atualizado", "Você tirou o produto da promoção", "success");
+                }
+
+                setTimeout(function() {
+                    location.reload();
+                },1500);
+
+            }
+        });        
         
     });
 
