@@ -310,6 +310,17 @@ class FunctionsTwig {
 
     }
 
+    private function selected(){
+
+        // Verificar o Status do pedido
+        $this->functions['selected'] = new \Twig\TwigFunction('selected', function($value1, $value2){
+        	return ($value1 == $value2) ? 'selected' : '';
+        });
+
+        return $this;
+
+    }
+
     public function run(){
 
         $this->siteUrl()
@@ -330,7 +341,8 @@ class FunctionsTwig {
         ->estoque()
         ->cliquesProduto()
         ->statusPedido()
-        ->statusPagamento();
+        ->statusPagamento()
+        ->selected();
 
     }
 

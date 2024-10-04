@@ -99,6 +99,77 @@ class AdminProdutosController extends BaseController {
 
     }
 
+    public function edit($args){
+
+        $id = filter_var($args[0], FILTER_SANITIZE_NUMBER_INT);
+
+        $categoriaModel = new CategoriaModel;
+        $categoriasEncontradas = $categoriaModel->fetchAll();
+
+        $marcaModel = new MarcaModel;
+        $marcasEncontradas = $marcaModel->fetchAll();
+
+        $produtoModel = new ProdutoModel;
+        $produtoEncontrado = $produtoModel->find('id', $id);
+        
+        $dados = [
+            'titulo' => 'Loja Virtual - RS-Dev | Painel Administrativo | Editar Produto',
+            'categorias' => $categoriasEncontradas,
+            'marcas' => $marcasEncontradas,
+            'produto' => $produtoEncontrado
+        ];
+
+        $template = $this->twig->load('admin_form_editar_produto.html');
+        echo $template->render($dados);
+
+    }
+
+    public function update($args){
+
+        $id = filter_var($args[0], FILTER_SANITIZE_NUMBER_INT);
+
+        $rules = [
+            'produto_nome' => 'required',
+            'produto_slug' => 'required',
+            'produto_valor' => 'required',
+            'produto_categoria' => 'required',
+            'produto_marca' => 'required',
+            'produto_garantia' => 'required',
+            'produto_descricao' => 'required',
+        ];
+
+        $validate = new Validate($rules);
+        $validate->validate();
+
+        if(!ErrorsValidate::erroValidacao()) {
+
+            $filter =new MassFilter;
+            $filter->filterInputs(
+                'produto_nome', 'produto_slug',
+                'produto_valor', 'produto_categoria',
+                'produto_marca', 'produto_garantia', 'produto_descricao'
+            );
+
+            $produtoModel = new ProdutoModel;
+            $updated = $produtoModel->update($filter->all(), $id);
+
+            if($updated) {
+
+                FlashMessage::add('mensagem_produto', 'Atualizado com sucesso', 'success');
+                return Redirect::back();
+
+            }
+
+            FlashMessage::add('mensagem_produto', 'Erro ao atualizar');
+            return Redirect::back();
+
+        }
+
+        Redirect::back();
+
+
+    }
+
     public function destroy($args){
 
         $id = filter_var($args[0], FILTER_SANITIZE_NUMBER_INT);
