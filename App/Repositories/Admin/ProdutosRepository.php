@@ -56,4 +56,15 @@ class ProdutosRepository {
         
     }
 
+    public function updateDestaque($id, $status){
+
+        $sql = "UPDATE {$this->produtoModel->table} SET produto_destaque = ? WHERE id = ?";
+        $this->produtoModel->typeDatabase->prepare($sql);
+        $this->produtoModel->typeDatabase->bindValue(1, $status);
+        $this->produtoModel->typeDatabase->bindValue(2, $id);
+
+        return $this->produtoModel->typeDatabase->execute();
+        
+    }
+
 }

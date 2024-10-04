@@ -67,7 +67,7 @@
                         {% else %}
                             {% set destaque = "" %}
                         {% endif %}
-                        <input type="checkbox" name="produto_destaque" {{ destaque }} />
+                        <input type="checkbox" class="check-destaque" data-id="{{ produto.id }}" {{ destaque }} />
                     </label>
                 </div>
             </td>
