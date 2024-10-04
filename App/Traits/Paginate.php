@@ -77,11 +77,11 @@ trait Paginate {
 
         $links = '';
 
-        if($this->currentPage() != 1) {
+        if($this->currentPage() != $this->totalPages()) {
             
             $next = ($this->currentPage() + 1);
 
-            $links .= '<li><a href="'.$this->link().$next.'" aria-label="Next"> <span aria-hidden="true">&laquo;</span></a></li>';
+            $links .= '<li><a href="'.$this->link().$next.'" aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li>';
             $links .= '<li><a href="'.$this->link().$this->totalPages().'"> ['.$this->totalPages().'] </a></li>';
 
         }
