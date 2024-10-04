@@ -35,13 +35,10 @@
                 <div class="checkbox">
                     <label>
                         {% if (produto.produto_promocao == 1) %}
-                            {# {% set promocao = "checked" %} #}
                             <button class="btn btn-xs btn-danger btn-tirar-promocao" data-id="{{ produto.id }}">Tirar</button>
-                            {% else %}
-                            {# {% set promocao = "" %} #}
+                        {% else %}
                             <button class="btn btn-xs btn-success btn-promocao" data-id="{{ produto.id }}">Colocar</button>
                         {% endif %}
-                        <!-- <input type="checkbox" name="produto_promocao" {{ promocao }} /> -->
                     </label>
                 </div>
             </td>
