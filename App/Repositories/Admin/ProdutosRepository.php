@@ -45,4 +45,15 @@ class ProdutosRepository {
         
     }
 
+    public function updatePresente($id, $status){
+
+        $sql = "UPDATE {$this->produtoModel->table} SET produto_presente = ? WHERE id = ?";
+        $this->produtoModel->typeDatabase->prepare($sql);
+        $this->produtoModel->typeDatabase->bindValue(1, $status);
+        $this->produtoModel->typeDatabase->bindValue(2, $id);
+
+        return $this->produtoModel->typeDatabase->execute();
+        
+    }
+
 }
