@@ -15,7 +15,7 @@ class Uri {
 	}
 
 	public function getUri(){
-		return $this->uri;
+		return parse_url($this->uri, PHP_URL_PATH);
 	}
 
 }
