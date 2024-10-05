@@ -19,11 +19,14 @@ class MassFilter extends Filters {
 
             $explode = explode(':', $value);
 
-            $type = isset($explode[1]) ? $explode[1] : 'string';
+            // $type = isset($explode[1]) ? $explode[1] : 'string';
+            $type = $explode[1] ?? 'string';
 
             $this->setObject($explode[0], $this->filter($explode[0], $type));
 
         }
+
+        return $this;
 
     }
 
