@@ -19,17 +19,18 @@ class AdminProdutosController extends BaseController {
 
     public function index(){
 
-        $produtosModel = new ProdutoModel;
+        // $produtosModel = new ProdutoModel;
         // $produtosEncontrados = $produtosModel->fetchAll();
         // $produtosEncontrados = $produtosModel->fetchAll('paginate')->paginate(2);
 
         $produtosRepository = new ProdutosRepository;
+        // $produtosEncontrados = $produtosRepository->select('*')->paginate(2)->get();
         $produtosEncontrados = $produtosRepository->listar()->paginate(2)->get();
 
         $dados = [
             'titulo' => 'Loja Virtual - RS-Dev | Painel Administrativo | Lista de Produtos',
             'produtos' => $produtosEncontrados,
-            'links' => $produtosModel->links()
+            'links' => $produtosRepository->links()
         ];
 
         $template = $this->twig->load('admin_listar_produtos.html');

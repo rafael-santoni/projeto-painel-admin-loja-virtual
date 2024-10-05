@@ -9,13 +9,13 @@ use App\Repositories\Repository;
 
 class ProdutosRepository extends Repository {
 
-    private $produtoModel;
-    private $model;
+    // private $produtoModel;
+    protected $model;
     public $sql;
 
     public function __construct(){
 
-        $this->produtoModel = new ProdutoModel;
+        // $this->produtoModel = new ProdutoModel;
         $this->model = new ProdutoModel;
 
     }
@@ -29,56 +29,56 @@ class ProdutosRepository extends Repository {
 
     public function atualizarCapa($capa, $id){
 
-        $sql = "UPDATE {$this->produtoModel->table} SET produto_foto = ? WHERE id = ?";
-        $this->produtoModel->typeDatabase->prepare($sql);
-        $this->produtoModel->typeDatabase->bindValue(1, $capa);
-        $this->produtoModel->typeDatabase->bindValue(2, $id);
+        $sql = "UPDATE {$this->model->table} SET produto_foto = ? WHERE id = ?";
+        $this->model->typeDatabase->prepare($sql);
+        $this->model->typeDatabase->bindValue(1, $capa);
+        $this->model->typeDatabase->bindValue(2, $id);
 
-        return $this->produtoModel->typeDatabase->execute();
+        return $this->model->typeDatabase->execute();
         
     }
 
     public function updateValorPromocao($id, $valor){
 
-        $sql = "UPDATE {$this->produtoModel->table} SET produto_valor_promocao = ? WHERE id = ?";
-        $this->produtoModel->typeDatabase->prepare($sql);
-        $this->produtoModel->typeDatabase->bindValue(1, $valor);
-        $this->produtoModel->typeDatabase->bindValue(2, $id);
+        $sql = "UPDATE {$this->model->table} SET produto_valor_promocao = ? WHERE id = ?";
+        $this->model->typeDatabase->prepare($sql);
+        $this->model->typeDatabase->bindValue(1, $valor);
+        $this->model->typeDatabase->bindValue(2, $id);
 
-        return $this->produtoModel->typeDatabase->execute();
+        return $this->model->typeDatabase->execute();
         
     }
 
     public function updatePromocao($id, $status){
 
-        $sql = "UPDATE {$this->produtoModel->table} SET produto_promocao = ? WHERE id = ?";
-        $this->produtoModel->typeDatabase->prepare($sql);
-        $this->produtoModel->typeDatabase->bindValue(1, $status);
-        $this->produtoModel->typeDatabase->bindValue(2, $id);
+        $sql = "UPDATE {$this->model->table} SET produto_promocao = ? WHERE id = ?";
+        $this->model->typeDatabase->prepare($sql);
+        $this->model->typeDatabase->bindValue(1, $status);
+        $this->model->typeDatabase->bindValue(2, $id);
 
-        return $this->produtoModel->typeDatabase->execute();
+        return $this->model->typeDatabase->execute();
         
     }
 
     public function updatePresente($id, $status){
 
-        $sql = "UPDATE {$this->produtoModel->table} SET produto_presente = ? WHERE id = ?";
-        $this->produtoModel->typeDatabase->prepare($sql);
-        $this->produtoModel->typeDatabase->bindValue(1, $status);
-        $this->produtoModel->typeDatabase->bindValue(2, $id);
+        $sql = "UPDATE {$this->model->table} SET produto_presente = ? WHERE id = ?";
+        $this->model->typeDatabase->prepare($sql);
+        $this->model->typeDatabase->bindValue(1, $status);
+        $this->model->typeDatabase->bindValue(2, $id);
 
-        return $this->produtoModel->typeDatabase->execute();
+        return $this->model->typeDatabase->execute();
         
     }
 
     public function updateDestaque($id, $status){
 
-        $sql = "UPDATE {$this->produtoModel->table} SET produto_destaque = ? WHERE id = ?";
-        $this->produtoModel->typeDatabase->prepare($sql);
-        $this->produtoModel->typeDatabase->bindValue(1, $status);
-        $this->produtoModel->typeDatabase->bindValue(2, $id);
+        $sql = "UPDATE {$this->model->table} SET produto_destaque = ? WHERE id = ?";
+        $this->model->typeDatabase->prepare($sql);
+        $this->model->typeDatabase->bindValue(1, $status);
+        $this->model->typeDatabase->bindValue(2, $id);
 
-        return $this->produtoModel->typeDatabase->execute();
+        return $this->model->typeDatabase->execute();
         
     }
 
