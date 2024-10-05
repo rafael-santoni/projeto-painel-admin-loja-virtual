@@ -13,6 +13,7 @@ use App\Controllers\BaseController;
 use App\Models\Admin\ProdutoModel;
 use App\Models\Admin\CategoriaModel;
 use App\Models\Admin\MarcaModel;
+use App\Repositories\Admin\ProdutosRepository;
 
 class AdminProdutosController extends BaseController {
 
@@ -20,7 +21,10 @@ class AdminProdutosController extends BaseController {
 
         $produtosModel = new ProdutoModel;
         // $produtosEncontrados = $produtosModel->fetchAll();
-        $produtosEncontrados = $produtosModel->fetchAll('paginate')->paginate(2);
+        // $produtosEncontrados = $produtosModel->fetchAll('paginate')->paginate(2);
+
+        $produtosRepository = new ProdutosRepository;
+        $produtosEncontrados = $produtosRepository->listar()->paginate(2)->get();
 
         $dados = [
             'titulo' => 'Loja Virtual - RS-Dev | Painel Administrativo | Lista de Produtos',

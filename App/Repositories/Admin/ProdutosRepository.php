@@ -3,13 +3,28 @@
 namespace App\Repositories\Admin;
 
 use App\Models\Admin\ProdutoModel;
+use App\Repositories\Repository;
+// use App\Traits\Paginate;
+// use App\Traits\PaginateRepository;
 
-class ProdutosRepository {
+class ProdutosRepository extends Repository {
 
     private $produtoModel;
+    private $model;
+    public $sql;
 
     public function __construct(){
+
         $this->produtoModel = new ProdutoModel;
+        $this->model = new ProdutoModel;
+
+    }
+
+    public function listar(){
+
+        $this->sql = "SELECT * FROM {$this->model->table}";
+        return $this;
+
     }
 
     public function atualizarCapa($capa, $id){
