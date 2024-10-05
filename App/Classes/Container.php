@@ -34,6 +34,10 @@ abstract class Container {
 
     }
 
+    public function __get($index){
+        return $this->get($index);
+    }
+
     public function get($index){
 
         if(!isset($this->container[$index])){
