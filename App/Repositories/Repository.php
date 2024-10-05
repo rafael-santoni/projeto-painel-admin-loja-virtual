@@ -8,7 +8,6 @@ use App\Traits\PaginateRepository;
 use App\Repositories\RepositoryBuilder;
 
 abstract class Repository extends RepositoryBuilder {
-
     
     use Paginate, PaginateRepository;
 

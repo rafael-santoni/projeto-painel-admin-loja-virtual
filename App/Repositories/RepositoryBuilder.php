@@ -5,7 +5,7 @@ namespace App\Repositories;
 class RepositoryBuilder {
 
     protected function createSql($paginate=null){
-/** @var ProdutosRepository $this */
+
         if(isset($this->sql)) {
             $sql = $this->sql;
         }

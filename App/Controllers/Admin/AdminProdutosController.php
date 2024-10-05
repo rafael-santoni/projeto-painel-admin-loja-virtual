@@ -19,16 +19,12 @@ class AdminProdutosController extends BaseController {
 
     public function index(){
 
-        // $produtosModel = new ProdutoModel;
-        // $produtosEncontrados = $produtosModel->fetchAll();
-        // $produtosEncontrados = $produtosModel->fetchAll('paginate')->paginate(2);
-
         $produtosRepository = new ProdutosRepository;
-        // $produtosEncontrados = $produtosRepository->select('*')->paginate(2)->get();
         
         if(isset($_GET['s'])) {
             $produtosEncontrados = $produtosRepository->listar()->busca(['produto_nome'])->paginate(2)->get();
         } else {
+            // $produtosEncontrados = $produtosRepository->select('*')->paginate(2)->get();
             $produtosEncontrados = $produtosRepository->listar()->paginate(2)->get();
         }
 

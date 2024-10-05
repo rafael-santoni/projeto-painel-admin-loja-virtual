@@ -4,20 +4,14 @@ namespace App\Repositories\Admin;
 
 use App\Models\Admin\ProdutoModel;
 use App\Repositories\Repository;
-// use App\Traits\Paginate;
-// use App\Traits\PaginateRepository;
 
 class ProdutosRepository extends Repository {
 
-    // private $produtoModel;
     protected $model;
     public $sql;
 
     public function __construct(){
-
-        // $this->produtoModel = new ProdutoModel;
         $this->model = new ProdutoModel;
-
     }
 
     public function listar(){
