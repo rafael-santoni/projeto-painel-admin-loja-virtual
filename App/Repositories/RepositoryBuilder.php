@@ -5,7 +5,7 @@ namespace App\Repositories;
 class RepositoryBuilder {
 
     protected function createSql($paginate=null){
-
+/** @var ProdutosRepository $this */
         if(isset($this->sql)) {
             $sql = $this->sql;
         }
@@ -23,6 +23,12 @@ class RepositoryBuilder {
         }
 
         $this->model->typeDatabase->prepare($sql);
+
+        if(isset($this->busca)) {
+            $busca = filter_var($_GET['s'], FILTER_SANITIZE_STRING);
+
+            $this->model->typeDatabase->bindValue(":{$this->busca[0]}", '%'.$busca.'%');
+        }
 
     }
 

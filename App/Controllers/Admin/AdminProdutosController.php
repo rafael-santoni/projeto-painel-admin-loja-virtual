@@ -25,7 +25,12 @@ class AdminProdutosController extends BaseController {
 
         $produtosRepository = new ProdutosRepository;
         // $produtosEncontrados = $produtosRepository->select('*')->paginate(2)->get();
-        $produtosEncontrados = $produtosRepository->listar()->paginate(2)->get();
+        
+        if(isset($_GET['s'])) {
+            $produtosEncontrados = $produtosRepository->listar()->busca(['produto_nome'])->paginate(2)->get();
+        } else {
+            $produtosEncontrados = $produtosRepository->listar()->paginate(2)->get();
+        }
 
         $dados = [
             'titulo' => 'Loja Virtual - RS-Dev | Painel Administrativo | Lista de Produtos',

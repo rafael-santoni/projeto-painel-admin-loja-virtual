@@ -52,6 +52,13 @@ trait Paginate {
 
         $link = "?page=";
 
+        if(isset($this->busca)) {
+
+            $busca = filter_var($_GET['s'], FILTER_SANITIZE_STRING);
+            $link = "?s={$busca}&page=";
+            
+        }
+
         return (new Uri)->getUri().$link;
 
     }
