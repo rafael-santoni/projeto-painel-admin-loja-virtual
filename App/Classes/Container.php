@@ -48,4 +48,14 @@ abstract class Container {
 
     }
 
+    public function load($class, $construct=null){
+
+        if(!class_exists($class)) {
+            throw new \Exception("Essa classe não existe {$class}");
+        }
+
+        return ($construct == null) ? new $class : new $class($construct);
+
+    }
+
 }
