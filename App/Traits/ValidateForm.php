@@ -7,22 +7,22 @@ use App\Classes\Validate;
 
 trait ValidateForm {
 
-    private function validateFields(){
-        return $this->load(Validate::class, $this->rules)->validate();
+    private function validateFields($rules){
+        return $this->load(Validate::class, $rules)->validate();
     }
 
-    protected function validateWithRepeat(){
+    protected function validateWithRepeat($rules){
 
-        $this->validateFields();
-        $this->load(RepeatedRegisters::class, $this->rules)->validate();
+        $this->validateFields($rules);
+        $this->load(RepeatedRegisters::class, $rules)->validate();
 
         return $this->get('error')->hasError();
         
     }
     
-    protected function validateWithoutRepeat(){
+    protected function validateWithoutRepeat($rules){
 
-        $this->validateFields();
+        $this->validateFields($rules);
 
         return $this->get('error')->hasError();
         

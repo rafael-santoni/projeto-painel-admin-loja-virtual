@@ -22,7 +22,7 @@ class Produtos extends Form {
         // $validate->validate()->repeatedRegisters(new RepeatedRegistersAdmin);
 
         // if(!$this->get('error')->erroValidacao()) {
-        if(!$this->validateWithRepeat()) {
+        if(!$this->validateWithRepeat($this->rules)) {
             
             $filter = $this->get('filters')->filterInputs(
                                                 'produto_nome', 'produto_slug',

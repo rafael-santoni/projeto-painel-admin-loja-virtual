@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Classes\ErrorsValidate;
 use App\Classes\FlashMessage;
+use App\Classes\Forms\Admin\Produtos;
 use App\Classes\MassFilter;
 use App\Classes\PersistInput;
 use App\Classes\Redirect;
@@ -62,68 +63,71 @@ class AdminProdutosController extends BaseController {
 
     public function store(){
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-            $rules = [
-                'produto_nome' => 'required',
-                'produto_slug' => 'required:produto',
-                'produto_valor' => 'required',
-                'produto_categoria' => 'required',
-                'produto_marca' => 'required',
-                'produto_garantia' => 'required',
-                'produto_descricao' => 'required',
-            ];
-
-            // $validate = new Validate($rules);
-            $validate = $this->load(Validate::class, $rules);
-            $validate->validate()->repeatedRegisters(new RepeatedRegistersAdmin);
-
-            // if(!ErrorsValidate::erroValidacao()) {
-            if(!$this->get('error')->erroValidacao()) {
-
-                /* $filter =new MassFilter;
-                $filter->filterInputs(
-                    'produto_nome', 'produto_slug',
-                    'produto_valor', 'produto_categoria',
-                    'produto_marca', 'produto_garantia', 'produto_descricao'
-                ); */
-                
-                $filter = $this->get('filters')->filterInputs(
-                                                    'produto_nome', 'produto_slug',
-                                                    'produto_valor', 'produto_categoria',
-                                                    'produto_marca', 'produto_garantia', 'produto_descricao'
-                                                );
-
-                // $produtoModel = new ProdutoModel;
-                $produtoModel = $this->load(ProdutoModel::class);
-                if($produtoModel->create($filter->all())) {
-
-                    /* FlashMessage::add('mensagem_produto', 'Produto cadastrado com sucesso!', 'success');
-                    PersistInput::removeInputs();
-                    
-                    return Redirect::redirect('/adminProdutos/create'); */
-
-                    $this->get('flash')->add('mensagem_produto', 'Produto cadastrado com sucesso!', 'success');
-                    $this->get('persist')->removeInputs();
-
-                    return $this->get('redirect')->redirect('/adminProdutos/create');
-
-                }
-
-                /* FlashMessage::add('mensagem_produto', 'Erro ao cadastrar o produto!');
-                    
-                return Redirect::redirect('/adminProdutos/create'); */
-
-                $this->get('flash')->add('mensagem_produto', 'Erro ao cadastrar o produto!');
-
-                return $this->get('redirect')->redirect('/adminProdutos/create');
-
-            }
-
-            // return Redirect::redirect('/adminProdutos/create');
-            return $this->get('redirect')->redirect('/adminProdutos/create');
-
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {   
+            $this->load(Produtos::class)->store();
         }
+            
+        // if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // $rules = [
+            //     'produto_nome' => 'required',
+            //     'produto_slug' => 'required:produto',
+            //     'produto_valor' => 'required',
+            //     'produto_categoria' => 'required',
+            //     'produto_marca' => 'required',
+            //     'produto_garantia' => 'required',
+            //     'produto_descricao' => 'required',
+            // ];
+
+            // // $validate = new Validate($rules);
+            // $validate = $this->load(Validate::class, $rules);
+            // $validate->validate()->repeatedRegisters(new RepeatedRegistersAdmin);
+
+            // // if(!ErrorsValidate::erroValidacao()) {
+            // if(!$this->get('error')->erroValidacao()) {
+
+            //     /* $filter =new MassFilter;
+            //     $filter->filterInputs(
+            //         'produto_nome', 'produto_slug',
+            //         'produto_valor', 'produto_categoria',
+            //         'produto_marca', 'produto_garantia', 'produto_descricao'
+            //     ); */
+                
+            //     $filter = $this->get('filters')->filterInputs(
+            //                                         'produto_nome', 'produto_slug',
+            //                                         'produto_valor', 'produto_categoria',
+            //                                         'produto_marca', 'produto_garantia', 'produto_descricao'
+            //                                     );
+
+            //     // $produtoModel = new ProdutoModel;
+            //     $produtoModel = $this->load(ProdutoModel::class);
+            //     if($produtoModel->create($filter->all())) {
+
+            //         /* FlashMessage::add('mensagem_produto', 'Produto cadastrado com sucesso!', 'success');
+            //         PersistInput::removeInputs();
+                    
+            //         return Redirect::redirect('/adminProdutos/create'); */
+
+            //         $this->get('flash')->add('mensagem_produto', 'Produto cadastrado com sucesso!', 'success');
+            //         $this->get('persist')->removeInputs();
+
+            //         return $this->get('redirect')->redirect('/adminProdutos/create');
+
+            //     }
+
+            //     /* FlashMessage::add('mensagem_produto', 'Erro ao cadastrar o produto!');
+                    
+            //     return Redirect::redirect('/adminProdutos/create'); */
+
+            //     $this->get('flash')->add('mensagem_produto', 'Erro ao cadastrar o produto!');
+
+            //     return $this->get('redirect')->redirect('/adminProdutos/create');
+
+            // }
+
+            // // return Redirect::redirect('/adminProdutos/create');
+            // return $this->get('redirect')->redirect('/adminProdutos/create');
+
+        // }
 
     }
 
