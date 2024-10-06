@@ -27,12 +27,18 @@
     </thead>
     
     <tbody>
-        <tr class="row-promocao">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+    {% for cliente in clientes %}
+        <tr>
+            <td>{{ cliente.name }}</td>
+            <td>{{ cliente.email }}</td>
+            <td>
+                <a class="btn btn-info btn-xs" href="" role="button">Editar</a>
+            </td>
+            <td>
+                <a class="btn btn-danger btn-xs" href="" role="button">Deletar</a>
+            </td>
         </tr>
+    {% endfor %}
     </tbody>
 
     <tfoot>
