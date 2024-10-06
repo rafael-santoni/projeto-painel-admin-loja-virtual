@@ -34,8 +34,9 @@ class AdminProdutosController extends BaseController {
             'links' => $produtosRepository->links()
         ];
 
-        $template = $this->twig->load('admin_listar_produtos.html');
-        echo $template->render($dados);
+        // $template = $this->twig->load('admin_listar_produtos.html');
+        // echo $template->render($dados);
+        $this->view($dados, 'admin_listar_produtos');
 
     }
 
@@ -53,8 +54,9 @@ class AdminProdutosController extends BaseController {
             'marcas' => $marcasEncontradas
         ];
 
-        $template = $this->twig->load('admin_form_cadastrar_produto.html');
-        echo $template->render($dados);
+        // $template = $this->twig->load('admin_form_cadastrar_produto.html');
+        // echo $template->render($dados);
+        $this->view($dados, 'admin_form_cadastrar_produto');
 
     }
 
@@ -145,8 +147,9 @@ class AdminProdutosController extends BaseController {
             'produto' => $produtoEncontrado
         ];
 
-        $template = $this->twig->load('admin_form_editar_produto.html');
-        echo $template->render($dados);
+        // $template = $this->twig->load('admin_form_editar_produto.html');
+        // echo $template->render($dados);
+        $this->view($dados, 'admin_form_editar_produto');
 
     }
 
