@@ -2,8 +2,8 @@
 
 namespace App\Classes;
 
-use App\Interfaces\InterfaceRepeatedRegisters;
-use App\Classes\RepeatedRegisters;
+// use App\Interfaces\InterfaceRepeatedRegisters;
+// use App\Classes\RepeatedRegisters;
 use App\Classes\TypesValidation;
 use App\Classes\PersistInput;
 
@@ -36,12 +36,12 @@ class Validate {
 
     }
 
-    public function repeatedRegisters(InterfaceRepeatedRegisters $repeat){
+    /* public function repeatedRegisters(InterfaceRepeatedRegisters $repeat){
 
         $repeatedRegisters =  new RepeatedRegisters($repeat);
         $repeatedRegisters->validate($this->rules);
 
-    }
+    } */
 
     public function validate(){
 
