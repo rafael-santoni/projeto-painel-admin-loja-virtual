@@ -35,7 +35,11 @@ abstract class Container {
     }
 
     public function __get($index){
-        return $this->get($index);
+
+        if(!property_exists($this, $index)) {
+            return $this->get($index);
+        }
+
     }
 
     public function get($index){

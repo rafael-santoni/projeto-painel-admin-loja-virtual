@@ -6,7 +6,7 @@ use App\Models\Admin\ProdutoModel;
 
 class Produtos extends Form {
 
-    private $rules = [
+    protected $rules = [
         'produto_nome' => 'required',
         'produto_slug' => 'required:'.ProdutoModel::class,
         'produto_valor' => 'required',
