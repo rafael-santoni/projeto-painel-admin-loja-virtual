@@ -159,46 +159,51 @@ class AdminProdutosController extends BaseController {
 
     public function update($args){
 
-        $id = filter_var($args[0], FILTER_SANITIZE_NUMBER_INT);
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $rules = [
-            'produto_nome' => 'required',
-            'produto_slug' => 'required',
-            'produto_valor' => 'required',
-            'produto_categoria' => 'required',
-            'produto_marca' => 'required',
-            'produto_garantia' => 'required',
-            'produto_descricao' => 'required',
-        ];
-
-        $validate = new Validate($rules);
-        $validate->validate();
-
-        if(!ErrorsValidate::erroValidacao()) {
-
-            $filter =new MassFilter;
-            $filter->filterInputs(
-                'produto_nome', 'produto_slug',
-                'produto_valor', 'produto_categoria',
-                'produto_marca', 'produto_garantia', 'produto_descricao'
-            );
-
-            $produtoModel = new ProdutoModel;
-            $updated = $produtoModel->update($filter->all(), $id);
-
-            if($updated) {
-
-                FlashMessage::add('mensagem_produto', 'Atualizado com sucesso', 'success');
-                return Redirect::back();
-
-            }
-
-            FlashMessage::add('mensagem_produto', 'Erro ao atualizar');
-            return Redirect::back();
+            $id = filter_var($args[0], FILTER_SANITIZE_NUMBER_INT);
+            $this->load(Produtos::class)->update($id);
 
         }
 
-        Redirect::back();
+        // $rules = [
+        //     'produto_nome' => 'required',
+        //     'produto_slug' => 'required',
+        //     'produto_valor' => 'required',
+        //     'produto_categoria' => 'required',
+        //     'produto_marca' => 'required',
+        //     'produto_garantia' => 'required',
+        //     'produto_descricao' => 'required',
+        // ];
+
+        // $validate = new Validate($rules);
+        // $validate->validate();
+
+        // if(!ErrorsValidate::erroValidacao()) {
+
+        //     $filter =new MassFilter;
+        //     $filter->filterInputs(
+        //         'produto_nome', 'produto_slug',
+        //         'produto_valor', 'produto_categoria',
+        //         'produto_marca', 'produto_garantia', 'produto_descricao'
+        //     );
+
+        //     $produtoModel = new ProdutoModel;
+        //     $updated = $produtoModel->update($filter->all(), $id);
+
+        //     if($updated) {
+
+        //         FlashMessage::add('mensagem_produto', 'Atualizado com sucesso', 'success');
+        //         return Redirect::back();
+
+        //     }
+
+        //     FlashMessage::add('mensagem_produto', 'Erro ao atualizar');
+        //     return Redirect::back();
+
+        // }
+
+        // Redirect::back();
 
 
     }

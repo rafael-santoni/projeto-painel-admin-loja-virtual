@@ -3,7 +3,7 @@
 {% block admin_content %}
 
 <h2>Editar Produto</h2>
-{{ flash('mensagem_produto') | raw }}
+{{ flash('mensagem_update_produto') | raw }}
 
 <form action="/adminProdutos/update/{{ produto.id }}" method="POST">
 
