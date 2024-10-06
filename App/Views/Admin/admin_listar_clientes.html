@@ -1,0 +1,48 @@
+{% extends 'layout_admin.html' %}
+
+{% block admin_content %}
+
+<h2>Lista de Clientes</h2>
+
+<div class="btn-group">
+  <a class="btn btn-defatult btn-xs" href="/painel" role="button">Início</a>
+</div>
+
+<div>
+    <form action="/adminClientes" method="get">
+        <input type="text" name="s" class="form-control" placeholder="Buscar cliente"/>
+    </form>
+</div>
+
+<br />
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Editar</th>
+            <th>Deletar</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr class="row-promocao">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="4">
+                {{ links | raw }}
+            </td>
+        </tr>
+    </tfoot>
+
+</table>
+
+{% endblock %}
