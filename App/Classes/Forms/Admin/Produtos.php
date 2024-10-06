@@ -2,11 +2,13 @@
 
 namespace App\Classes\Forms\Admin;
 
+use App\Models\Admin\ProdutoModel;
+
 class Produtos extends Form {
 
-    private $rulesStore = [
+    private $rules = [
         'produto_nome' => 'required',
-        'produto_slug' => 'required:produto',
+        'produto_slug' => 'required:'.ProdutoModel::class,
         'produto_valor' => 'required',
         'produto_categoria' => 'required',
         'produto_marca' => 'required',
@@ -16,10 +18,11 @@ class Produtos extends Form {
 
     public function store(){
 
-        $validate = $this->load(Validate::class, $this->rulesStore);
-        $validate->validate()->repeatedRegisters(new RepeatedRegistersAdmin);
+        // $validate = $this->load(Validate::class, $this->rulesStore);
+        // $validate->validate()->repeatedRegisters(new RepeatedRegistersAdmin);
 
-        if(!$this->get('error')->erroValidacao()) {
+        // if(!$this->get('error')->erroValidacao()) {
+        if(!$this->validateWithRepeat()) {
             
             $filter = $this->get('filters')->filterInputs(
                                                 'produto_nome', 'produto_slug',

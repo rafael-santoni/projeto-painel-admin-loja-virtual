@@ -15,11 +15,17 @@ trait ValidateForm {
 
         $this->validateFields();
         $this->load(RepeatedRegisters::class, $this->rules)->validate();
+
+        return $this->get('error')->hasError();
         
     }
-
+    
     protected function validateWithoutRepeat(){
+
         $this->validateFields();
+
+        return $this->get('error')->hasError();
+        
     }
 
 }

@@ -24,7 +24,8 @@ class ErrorsValidate {
 
     }
 
-    public static function erroValidacao(){
+    // public static function erroValidacao(){
+    public static function hasError(){
 
         if(isset($_SESSION['error'])) {
             return (empty($_SESSION['error'])) ? false : true;
