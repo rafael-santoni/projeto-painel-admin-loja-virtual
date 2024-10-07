@@ -1,0 +1,47 @@
+{% extends 'layout_admin.html' %}
+
+{% block admin_content %}
+
+<h2>Lista de Categorias</h2>
+
+<div class="btn-gorup">
+    <a class="btn btn-default" href="/painel" role="button">Início</a>
+    <a class="btn btn-default" href="/adminCategorias/create" role="button">Nova Categoria</a>
+</div>
+
+<div>
+    <form action="/adminCategorias" method="get">
+        <input type="text" name="s" class="form-control" placeholder="Buscar Categoria" />
+    </form>
+</div>
+<br />
+
+<table class="table table-condensed table-hover">
+    
+    <thead>
+        <tr>
+            <td>Nome</td>
+            <td>Editar</td>
+            <td>Deletar</td>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for categoria in categorias %}
+        <tr>
+            <td>{{ categoria.categoria_nome }}</td>
+            <td><a href="/adminCategorias/edit/{{ categoria.id }}" class="btn btn-xs btn-info">Editar</a></td>
+            <td><a href="/adminCategorias/destroy/{{ categoria.id }}" class="btn btn-xs btn-danger">Deletar</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3">{{ links | raw }}</td>
+        </tr>
+    </tfoot>
+
+</table>
+
+{% endblock %}

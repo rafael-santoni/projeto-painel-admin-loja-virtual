@@ -12,6 +12,7 @@ class AdminClientesController extends BaseController {
 
         $clientesRepository = new ClientesRepository;
         if(isset($_GET['s'])) {
+            dump('caiu no $_GET'); exit;
             $clientesEncontrados = $clientesRepository->select('*')->busca(['name'])->paginate(15)->get();
         } else {
             $clientesEncontrados = $clientesRepository->select('*')->paginate(15)->get();
