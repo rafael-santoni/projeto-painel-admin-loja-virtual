@@ -57,4 +57,15 @@ class AdminClientesController extends BaseController {
 
     }
 
+    public function destroy($args){
+
+        $id = filter_var($args[0], FILTER_SANITIZE_NUMBER_INT);
+
+        $clientes = new ClientesRepository;
+        $clientes->model->delete('id', $id);
+
+        return $this->get('redirect')->back();
+
+    }
+
 }
