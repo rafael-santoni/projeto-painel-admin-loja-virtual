@@ -30,9 +30,11 @@ class Categorias extends Form {
             $this->get('flash')->add('mensagem_cadastrar_categoria', 'Erro ao cadastrar a categoria!');
 
             return $this->get('redirect')->back();
-
+            
         }
-
+        
+        return $this->get('redirect')->back();
+        
     }
 
 }
