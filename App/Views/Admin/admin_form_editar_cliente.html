@@ -1,0 +1,72 @@
+{% extends 'layout_admin.html' %}
+
+{% block admin_content %}
+
+<h2>Atualizar Cliente</h2>
+
+{{ flash('mensagem_update_cliente') | raw }}
+
+<form action="/adminClientes/update/{{ cliente.id }}" method="POST" role="form">
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+        <label for="name">Nome</label>
+        {{ errorField('name') | raw }}
+        <input type="text" name="name" id="input" class="form-control" value="{{ cliente.name }}" title="" />
+
+        <label for="sobrenome">Sobrenome</label>
+        {{ errorField('sobrenome') | raw }}
+        <input type="text" name="sobrenome" id="input" class="form-control" value="{{ cliente.sobrenome }}" title="" />
+
+        <label for="email">Email</label>
+        {{ errorField('email') | raw }}
+        <input type="text" name="email" id="input" class="form-control" value="{{ cliente.email }}" title="" />
+
+    </div>
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+        <label for="cep">CEP</label>
+        {{ errorField('cep') | raw }}
+        <input type="text" name="cep" id="input" class="form-control" value="{{ cliente.cep }}" title="" />
+
+        <label for="cidade">Cidade</label>
+        {{ errorField('cidade') | raw }}
+        <input type="text" name="cidade" id="input" class="form-control" value="{{ cliente.cidade }}" title="" />
+
+        <label for="endereco">Endereço</label>
+        {{ errorField('endereco') | raw }}
+        <input type="text" name="endereco" id="input" class="form-control" value="{{ cliente.endereco }}" title="" />
+
+    </div>
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+        <label for="bairro">Bairro</label>
+        {{ errorField('bairro') | raw }}
+        <input type="text" name="bairro" id="input" class="form-control" value="{{ cliente.bairro }}" title="" />
+
+        <label for="estado">Estado</label>
+        {{ errorField('estado') | raw }}
+        <input type="text" name="estado" id="input" class="form-control" value="{{ cliente.estado }}" title="" />
+
+    </div>
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+        <label for="ddd">DDD</label>
+        {{ errorField('ddd') | raw }}
+        <input type="text" name="ddd" id="input" class="form-control" value="{{ cliente.ddd }}" title="" />
+
+        <label for="telefone">Telefone</label>
+        {{ errorField('telefone') | raw }}
+        <input type="text" name="telefone" id="input" class="form-control" value="{{ cliente.telefone }}" title="" />
+
+    </div>
+
+    <div style="clear: both;"></div>
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+
+</form>
+
+{% endblock %}
