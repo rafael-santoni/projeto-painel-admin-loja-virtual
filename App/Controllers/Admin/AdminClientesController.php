@@ -5,7 +5,6 @@ namespace App\Controllers\Admin;
 use App\Classes\Forms\Admin\Clientes;
 use App\Controllers\BaseController;
 use App\Repositories\Admin\ClientesRepository;
-use App\Repositories\Admin\UsersRepository;
 
 class AdminClientesController extends BaseController {
 
@@ -33,7 +32,8 @@ class AdminClientesController extends BaseController {
         $id = filter_var($args[0], FILTER_SANITIZE_NUMBER_INT);
 
         // $clienteEncontrado = $this->load(UsersRepository::class)->select('name')->get();
-        $clienteEncontrado = $this->load(UsersRepository::class)->select('name,sobrenome,email,endereco,bairro,cidade,estado,cep,ddd,telefone')->first();
+        // $clienteEncontrado = $this->load(UsersRepository::class)->select('id,name,sobrenome,email,endereco,bairro,cidade,estado,cep,ddd,telefone')->first();
+        $clienteEncontrado = $this->load(ClientesRepository::class)->model->find('id', $id);
 
         $dados = [
             'title' => 'Loja Virtual - RS-Dev | Painel Administrativo | Editar Cliente',
@@ -46,14 +46,14 @@ class AdminClientesController extends BaseController {
 
     public function update($args){
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $id = filter_var($args[0], FILTER_SANITIZE_NUMBER_INT);
 
             $clientes = new Clientes;
             $clientes->update($id);
 
-        }
+        // }
 
     }
 
