@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Admin;
 
+use App\Classes\Forms\Admin\Categorias;
 use App\Controllers\BaseController;
 use App\Repositories\Admin\CategoriasRepository;
 
@@ -24,6 +25,23 @@ class AdminCategoriasController extends BaseController {
         ];
 
         $this->view($dados, 'admin_listar_categorias');
+
+    }
+
+    public function create(){
+
+        $dados = [
+            'title' => 'Loja Virtual - RS-Dev | Painel Administrativo | Cadastrar Categoria'
+        ];
+
+        $this->view($dados, 'admin_form_cadastrar_categoria');
+
+    }
+
+    public function store(){
+
+        $categorias = new Categorias;
+        $categorias->store();
 
     }
 
