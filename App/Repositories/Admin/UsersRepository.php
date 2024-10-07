@@ -3,24 +3,25 @@
 namespace App\Repositories\Admin;
 
 use App\Models\Admin\UserModel;
+use App\Repositories\Repository;
 
-class UsersRepository {
+class UsersRepository extends Repository {
 
     private $userModel;
 
     public function __construct(){
-        $this->userModel = new UserModel;
+        $this->model = new UserModel;
     }
 
     public function listaUsers($limite=null){
 
         $limit = !is_null($limite) ? 'limit '.$limite : '';
 
-        $sql = "SELECT * FROM {$this->userModel->table} ORDER BY id DESC {$limit}";
-        $this->userModel->typeDatabase->prepare($sql);
-        $this->userModel->typeDatabase->execute();
+        $sql = "SELECT * FROM {$this->model->table} ORDER BY id DESC {$limit}";
+        $this->model->typeDatabase->prepare($sql);
+        $this->model->typeDatabase->execute();
         
-        return $this->userModel->typeDatabase->fetchAll();
+        return $this->model->typeDatabase->fetchAll();
         
     }
 

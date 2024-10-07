@@ -32,10 +32,10 @@
             <td>{{ cliente.name }}</td>
             <td>{{ cliente.email }}</td>
             <td>
-                <a class="btn btn-info btn-xs" href="" role="button">Editar</a>
+                <a href="/adminClientes/edit/{{ cliente.id }}" class="btn btn-info btn-xs" role="button">Editar</a>
             </td>
             <td>
-                <a class="btn btn-danger btn-xs" href="" role="button">Deletar</a>
+                <a href="/adminClientes/destroy/{{ cliente.id }}" class="btn btn-danger btn-xs" role="button">Deletar</a>
             </td>
         </tr>
     {% endfor %}

@@ -29,12 +29,45 @@ abstract class Repository extends RepositoryBuilder {
     }
 
     public function get(){
-        return $this->executeSql();
+
+        // return $this->executeSql();
+        $this->createAndExecute();
+
+        return $this->model->typeDatabase->fetchAll();
+
     }
 
-    private function executeSql(){
+    // private function executeSql($fetchAll){
 
-        $this->createSql('');
+    //     $this->createSql();
+
+    //     Bind::bind('bind', $this->model->typeDatabase->getBind());
+
+    //     if($this->paginate) {
+    //         $this->createSql('paginate');
+    //     }
+
+    //     $this->model->typeDatabase->execute();
+
+    //     if(is_null($fetchAll)) {
+    //         return $this->model->typeDatabase->fetchAll();
+    //     }
+
+    //     return $this->model->typeDatabase->fetch();
+
+    // }
+
+    public function first(){
+
+        $this->createAndExecute();
+
+        return $this->model->typeDatabase->fetch();
+
+    }
+
+    private function createAndExecute(){
+
+        $this->createSql();
 
         Bind::bind('bind', $this->model->typeDatabase->getBind());
 
@@ -44,9 +77,6 @@ abstract class Repository extends RepositoryBuilder {
 
         $this->model->typeDatabase->execute();
 
-        return $this->model->typeDatabase->fetchAll();
-
     }
-
 
 }
